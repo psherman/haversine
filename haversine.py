@@ -26,13 +26,18 @@ def haversine(start, end):
     return R*c
 
 
+def city_to_city(first, second):
+    d = haversine(first, second)
+    pretty_distance = '{0:.3f}'.format(d)
+    return [Distance(first.name, second.name, pretty_distance),
+            Distance(second.name, first.name, pretty_distance)]
+
+
 def distances(cities):
     lengths = []
     for pos, city in enumerate(cities):
         for other_city in cities[pos+1:]:
-            d = haversine(city, other_city)
-            lengths.append(Distance(city.name, other_city.name, d))
-            lengths.append(Distance(other_city.name, city.name, d))
+            lengths.extend(city_to_city(city, other_city))
     return lengths
 
 
