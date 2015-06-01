@@ -1,2 +1,2 @@
-venv
 *.py[co]
+distances.csv
