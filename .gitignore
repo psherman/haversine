@@ -1,2 +1,4 @@
 *.py[co]
 distances.csv
+trips.json
+locations.json
